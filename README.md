@@ -7,9 +7,10 @@ This app is deployed on Heroku with mLab, whoch is remote MongoDB database that 
 
 Technologies used:
 * Axios = promised-based http library (works similarly to AJAX calls) on both server and client side
-* Cheerio = 
-* Express = 
-* Mongoose = 
+* Cheerio = Package to enable server-side jQuery syntax
+* Express = Node.js web application framework that handles server and routing
+* MongoDB = NonSQL database to store article information
+* Mongoose = ORM for Mongo database in Node.js
 
 How is this app useful? 
 Learned how to use noSQL databases like MongoDB through storing JSON objects and information as fields. It was also important to realize that given the flexibility of the MongoDB, there needs to be forms of validations in place so that no unintentional fields are created.
