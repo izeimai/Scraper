@@ -1,27 +1,26 @@
-// // Grab the articles as a json
-// $.getJSON("/articles", function(data) {
-//   // For each one
-//   for (var i = 0; i < data.length; i++) {
-//     // Display the apropos information on the page
-//     $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-//   }
-// });
-
-// Scrape button
+// Scrape button 
 $("#scrapeButton").on("click", function() {
   $.ajax({
     method: "GET",
     url: "/scrape",
   })
   .then (function(data) {
-    console.log(data);
     window.location="/";
   })
 });
 
+// Clear button
+$("#clearButton").on("click", function() {
+  console.log("Clear button pushed")
+  .then (function(data) {
+    console.log("")
+    //window.location="/";
+    //db.Article.remove({})
+  })
+});
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function() {
+$(".noteButton").on("click", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
@@ -42,7 +41,7 @@ $(document).on("click", "p", function() {
       // A textarea to add a new note body
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button data-id='" + data._id + "' id='saveNote'>Save Note</button>");
 
       // If there's a note in the article
       if (data.note) {
@@ -54,8 +53,8 @@ $(document).on("click", "p", function() {
     });
 });
 
-// When you click the savenote button
-$(document).on("click", "#savenote", function() {
+// When you click the saveNote button
+$(document).on("click", "#saveNote", function() {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 

@@ -36,12 +36,13 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
 
+// Landing page
 app.get("/", function(req, res) {
   db.Article.find({})
   .then(function (dbArticle) {
     console.log(dbArticle);
 
-    // if Articles exist, send back to the client, and put it in a object
+    // if Articles exist, send back to the client as an object
     var articleObject = {
       article: dbArticle
     }
@@ -88,6 +89,9 @@ app.get("/scrape", function (req, res) {
 
     // Send a message to the client that scrape completed
     res.send("Scrape Complete");
+    // window.location="/";
+    // res.redirect("/");
+
   });
 });
 
@@ -109,7 +113,7 @@ app.get("/articles", function (req, res) {
 app.get("/articles/:id", function (req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
   db.Article.findOne({ _id: req.params.id })
-    // ..and populate all of the notes associated with it
+    // and use Mongoose's populate() to show all of the notes associated with it
     .populate("note")
     .then(function (dbArticle) {
       // If we were able to successfully find an Article with the given id, send it back to the client

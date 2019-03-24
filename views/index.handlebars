@@ -1,18 +1,19 @@
 <!-- Replaces index page -->
-<div class="col-md-12">
-  <h2>Scraped articles</h2>
+<div class="row">
+  <div class="col-md-8">
+    <h2>Scraped articles</h2>
 
-    <div id="notes"></div>
+    
 
-  {{#if article}}
+    {{#if article}}
 
-  <ul>
     {{#each article}}
-    <p>{{this.title}}</p>
+    <h4>{{this.title}}</h4>
     <a href={{this.link}}>
       <p>Link to original article</p>
     </a>
-    <button type="button" class="btn saveButton" data-id={{this._id}}>Save this article</button></button>
+    <button type="button" class="btn noteButton" data-id={{this._id}}>Add or view notes</button></button>
+    <br>
     <br>
     {{/each}}
 
@@ -20,15 +21,8 @@
     <h3>There are no new articles. Please click on "Scrape" button.</h3>
     {{/if}}
 
-</div>
-
-{{!-- <h2>Add a comment</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <input type="text" name="commentTitle">
-    <input type="text" name="commentBody">
   </div>
-
-  <button type="submit">Add comment</button>
-</form> --}}
+  <div class="col-md-4">
+    <div id="notes"></div>
+  </div>
+</div>
