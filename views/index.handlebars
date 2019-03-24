@@ -1,61 +1,38 @@
-<nav class= "navbar navbar-expand-lg navbar-dark bg-secondary">
-  <a class="navbar-brand" href="/">Scraper</a>
-  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColoar" aria-expand="false" aria-label="Toggle navigation">
-    <span class="navbar=toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor">
-    <ul class="navbar-nav">
-      <li class = "nav-item active">
-        <a class="nav-link" href="/"></a>
-      </li>
-      <li class = "nav-item">
-        <a class="nav-link" href="/saved">Saved Articles</a>
-      </li>
-      <li class = "nav-item">
-        <a class="btn btn-primary scrape-new">Scrape Articles</a>
-      </li>
-      <li class = "nav-item">
-        <a class="btn btn-primary clear">Clear Articles</a>
-      </li>
-    </ul>
+<!-- Replaces index page -->
+<div class="col-md-12">
+  <h2>Scraped articles</h2>
+
+  <div id="wrapper">
+    <div id="articles"></div>
+    <div id="notes"></div>
   </div>
-</nav>
 
-<h1>Cats!</h1>
+  {{#if article}}
 
-<h2>Cats that are not sleepy!</h2>
+  <ul>
+    {{#each article}}
+    <p>{{this.headline}}</p>
+    <p>{{this.summary}}</p>
+    <a href={{this.url}}>
+      <p>Link to original article</p>
+    </a>
+    <button type="button" class="btn btn-success saveButton" data-id={{this._id}}>Save this article</button></button>
+    <br>
+    {{/each}}
 
-<ul>
-  {{#each articles}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each articles}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
+    {{else}}
+    <h3>There are no new articles. Please click on "Scrape" button.</h3>
     {{/if}}
-  {{/each}}
-</ul>
 
-<h2>Add a Cat</h2>
+</div>
+
+{{!-- <h2>Add a comment</h2>
 <form class="create-form">
 
   <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+    <input type="text" name="commentTitle">
+    <input type="text" name="commentBody">
   </div>
 
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form>
+  <button type="submit">Add comment</button>
+</form> --}}
