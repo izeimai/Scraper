@@ -2,21 +2,17 @@
 <div class="col-md-12">
   <h2>Scraped articles</h2>
 
-  <div id="wrapper">
-    <div id="articles"></div>
     <div id="notes"></div>
-  </div>
 
   {{#if article}}
 
   <ul>
     {{#each article}}
-    <p>{{this.headline}}</p>
-    <p>{{this.summary}}</p>
-    <a href={{this.url}}>
+    <p>{{this.title}}</p>
+    <a href={{this.link}}>
       <p>Link to original article</p>
     </a>
-    <button type="button" class="btn btn-success saveButton" data-id={{this._id}}>Save this article</button></button>
+    <button type="button" class="btn saveButton" data-id={{this._id}}>Save this article</button></button>
     <br>
     {{/each}}
 
