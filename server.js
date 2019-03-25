@@ -37,22 +37,22 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 // Routes
 
 // Landing page
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   db.Article.find({})
-  .then(function (dbArticle) {
-    console.log(dbArticle);
+    .then(function (dbArticle) {
+      console.log(dbArticle);
 
-    // if Articles exist, send back to the client as an object
-    var articleObject = {
-      article: dbArticle
-    }
-    // Render on page with index.handlebars
-    res.render("index", articleObject);
-  })
-  .catch(function (err) {
-    // If an error occurred, send it to the client
-    res.json(err);
-  });
+      // if Articles exist, send back to the client as an object
+      var articleObject = {
+        article: dbArticle
+      }
+      // Render on page with index.handlebars
+      res.render("index", articleObject);
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 });
 
 // A GET route for scraping the echoJS website
@@ -89,10 +89,20 @@ app.get("/scrape", function (req, res) {
 
     // Send a message to the client that scrape completed
     res.send("Scrape Complete");
-    // window.location="/";
-    // res.redirect("/");
-
   });
+});
+
+app.delete("/articles", function (req, res) {
+  db.Article.remove({})
+    .then(function () {
+      console.log("Deleted articles");
+      // Tried res.redirect("/"); here but did not work
+      window.location = "/";
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 });
 
 // Route for getting all Articles from the db

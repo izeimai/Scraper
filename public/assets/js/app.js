@@ -1,26 +1,28 @@
 // Scrape button 
-$("#scrapeButton").on("click", function() {
+$("#scrapeButton").on("click", function () {
   $.ajax({
     method: "GET",
     url: "/scrape",
   })
-  .then (function(data) {
-    window.location="/";
-  })
+    .then(function (data) {
+      $("#loading").text("Loading articles... Please wait for a few seconds");
+      window.location = "/";
+    })
 });
 
 // Clear button
-$("#clearButton").on("click", function() {
-  console.log("Clear button pushed")
-  .then (function(data) {
-    console.log("")
-    //window.location="/";
-    //db.Article.remove({})
+$("#clearButton").on("click", function () {
+  $.ajax({
+    method: "DELETE",
+    url: "/articles",
   })
+    .then(function () {
+      window.location = "/";
+    })
 });
 
 // Whenever someone clicks a p tag
-$(".noteButton").on("click", function() {
+$(".noteButton").on("click", function () {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
@@ -32,7 +34,7 @@ $(".noteButton").on("click", function() {
     url: "/articles/" + thisId
   })
     // With that done, add the note information to the page
-    .then(function(data) {
+    .then(function (data) {
       console.log(data);
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
@@ -54,7 +56,7 @@ $(".noteButton").on("click", function() {
 });
 
 // When you click the saveNote button
-$(document).on("click", "#saveNote", function() {
+$(document).on("click", "#saveNote", function () {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
@@ -70,7 +72,7 @@ $(document).on("click", "#saveNote", function() {
     }
   })
     // With that done
-    .then(function(data) {
+    .then(function (data) {
       // Log the response
       console.log(data);
       // Empty the notes section
