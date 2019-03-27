@@ -1,4 +1,8 @@
 # Scraper
+
+Deployed on heroku:
+https://morning-sierra-48356.herokuapp.com/
+
 Scrapes sciencemag.com website and stores articles in Mongo database using node packages (express, mongoose, cheerio, and axios)
 
 What does this app do? 
