@@ -21,11 +21,11 @@ $("#clearButton").on("click", function () {
     })
 });
 
-// Whenever someone clicks a p tag
+// Note button is clicked to open notes section for corresponding article
 $(".noteButton").on("click", function () {
   // Empty the notes from the note section
   $("#notes").empty();
-  // Save the id from the p tag
+  // Save the id from the note button
   var thisId = $(this).attr("data-id");
 
   // Now make an ajax call for the Article
