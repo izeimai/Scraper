@@ -1,20 +1,17 @@
 <!-- Replaces index page -->
 <div class="row">
   <div class="col-md-8">
-    <h2>Scraped articles</h2>
-
-    
+    <h2>Scraped articles from Science magazine website</h2>
 
     {{#if article}}
-
     {{#each article}}
     <h4>{{this.title}}</h4>
     <a href={{this.link}}>
       <p>Link to original article</p>
     </a>
+    <p>{{this.summary}}</p>
     <button type="button" class="btn noteButton" data-id={{this._id}}>Add or view notes</button>
-    <br>
-    <br>
+    <br><br><br>
     {{/each}}
 
     {{else}}

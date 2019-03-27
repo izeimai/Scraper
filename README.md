@@ -1,8 +1,8 @@
 # Scraper
-Scrapes ******.com website and store in Mongo database using node packages (express, mongoose, cheerio, and axios)
+Scrapes sciencemag.com website and stores articles in Mongo database using node packages (express, mongoose, cheerio, and axios)
 
 What does this app do? 
-When the user visits the website, the scraper will scrape news stories from ******.com then displays and stores information of the scraped articles. Each article's headline, summary and URL are stored in the Mongo database. Additionally, each user can leave comments on the articles displayed that are stored in the database and can be viewed again. These comments are associated with the article so all users can see those stored comments and can be deleted.
+When the user visits the website, the scraper will scrape news stories from https://www.sciencemag.org/news/scienceinsider then displays and stores information of the scraped articles. Each article's headline, summary and URL are stored in the Mongo database. Additionally, each user can leave comments on the articles displayed that are stored in the database and can be viewed again. These comments are associated with the article so all users can see the stored comments and can also be deleted.
 This app is deployed on Heroku with mLab, whoch is remote MongoDB database that Heroku supports natively.
 
 Technologies used:
